@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Globe, Smartphone, TrendingUp, Code, Brain, Shield, CheckCircle, Star, Users, Award, Zap } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import SpotlightCard from "@/components/ui/spotlight-card"
+import { Award, Brain, Code, Globe, Shield, Smartphone, Star, TrendingUp, Users, Zap } from "lucide-react"
 
 export default function WhatWeDo() {
     const services = [
@@ -77,24 +78,25 @@ export default function WhatWeDo() {
         <div className="min-h-screen">
             {/* Hero Section */}
             <section className="relative py-20 px-4 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10">
-                    <img src="/about-bg.jpg" alt="" className='w-full h-full object-cover' />
+                <div className="absolute inset-0">
+                    <img src="/hero-page.jpg" alt="" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-900/60 to-purple-900/60 brightness-50 backdrop-blur-0" />
                 </div>
 
                 <div className="relative max-w-7xl mx-auto text-center">
-                    <Badge className="mb-4 bg-blue-100 text-white hover:bg-blue-200">About Us</Badge>
-                    <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+                    <Badge className="mb-4 bg-blue-100 text-primary hover:bg-blue-50">About Us</Badge>
+                    <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-50 to-purple-200 py-4 bg-clip-text text-transparent mb-6">
                         Transforming Ideas Into
                         <br />
                         Digital Excellence
                     </h1>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
                         At TechExpert, we identify, develop, and bring to market high-quality services with global acceptability at
                         affordable costs to facilitate our customers.
                     </p>
                     <Button
                         size="lg"
-                        className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800"
                     >
                         Get Started Today
                     </Button>
@@ -102,40 +104,44 @@ export default function WhatWeDo() {
             </section>
 
             {/* Mission & Vision */}
-            <section className="py-16 px-4">
-                <div className="max-w-7xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <Card className="border-0  bg-white/80 backdrop-blur-sm">
-                            <CardHeader>
-                                <CardTitle className="text-2xl text-blue-600">Our Mission</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-gray-600 leading-relaxed">
-                                    To be a leading provider of high-quality services that meet global standards at affordable costs. We
-                                    believe technology can transform businesses and we're passionate about helping clients leverage the
-                                    power of technology to achieve their goals.
-                                </p>
-                            </CardContent>
-                        </Card>
-                        <Card className="border-0 bg-white/80 backdrop-blur-sm">
-                            <CardHeader>
-                                <CardTitle className="text-2xl text-purple-600">Our Vision</CardTitle>
-                            </CardHeader>
-                            <CardContent>
-                                <p className="text-gray-600 leading-relaxed">
-                                    To be recognized as a trusted partner in the industry, known for our commitment to excellence,
-                                    innovation, and customer satisfaction. We continuously strive to improve our capabilities to address
-                                    the unmet needs of our clients.
-                                </p>
-                            </CardContent>
-                        </Card>
+            <div className="relative w-full h-full pt-20">
+                <img src="/bg-elements.jpg" alt="bg-elements" className="absolute inset-0 -z-10 opacity-30 min-h-screen object-cover" />
+                <section className="py-16 px-4">
+                    <div className="container mx-auto">
+                        <div className="grid md:grid-cols-2 gap-8">
+                            <Card className="border-0 bg-white/80 backdrop-blur-sm shadow-none">
+                                <CardHeader>
+                                    <CardTitle className="text-2xl text-blue-600">Our Mission</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-gray-600 leading-relaxed">
+                                        To be a leading provider of high-quality services that meet global standards at affordable costs. We
+                                        believe technology can transform businesses and we're passionate about helping clients leverage the
+                                        power of technology to achieve their goals.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                            <Card className="border-0 bg-white/80 backdrop-blur-sm shadow-none">
+                                <CardHeader>
+                                    <CardTitle className="text-2xl text-purple-600">Our Vision</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-gray-600 leading-relaxed">
+                                        To be recognized as a trusted partner in the industry, known for our commitment to excellence,
+                                        innovation, and customer satisfaction. We continuously strive to improve our capabilities to address
+                                        the unmet needs of our clients.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
 
             {/* Why Choose Us */}
-            <section className="py-16 px-4">
-                <div className="max-w-7xl mx-auto">
+            
+            <section className="">
+                <div className="container mx-auto mt-12">
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose TechExpert?</h2>
                         <p className="text-xl text-gray-600">We deliver exceptional value through our commitment to excellence</p>
@@ -154,7 +160,6 @@ export default function WhatWeDo() {
                     </div>
                 </div>
             </section>
-
         </div>
     )
 }
