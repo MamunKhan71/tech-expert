@@ -1,30 +1,29 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
-import { useState, useMemo } from "react"
-import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { AnimatePresence, motion } from "framer-motion"
 import {
-    Smartphone,
     Apple,
-    Layers,
     ArrowRight,
-    Sparkles,
-    Code,
-    Palette,
-    Zap,
-    Search,
-    Globe,
-    Database,
-    Shield,
-    Cloud,
     BarChart,
+    Cloud,
+    Code,
+    Database,
+    Globe,
     Headphones,
+    Layers,
+    Palette,
+    Search,
+    Shield,
+    Smartphone,
+    Sparkles,
+    Zap,
 } from "lucide-react"
+import Link from "next/link"
+import { useMemo, useState } from "react"
 
 // Extended mock data with categories
 const servicesData = [
@@ -243,8 +242,6 @@ const iconMap = {
 
 export default function ServicesPage() {
     const [activeTab, setActiveTab] = useState("all")
-    const [searchQuery, setSearchQuery] = useState("")
-
     const filteredServices = useMemo(() => {
         let filtered = servicesData
 
@@ -253,20 +250,12 @@ export default function ServicesPage() {
             filtered = filtered.filter((service) => service.category === activeTab)
         }
 
-        // Filter by search query
-        if (searchQuery) {
-            filtered = filtered.filter(
-                (service) =>
-                    service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    service.description.toLowerCase().includes(searchQuery.toLowerCase()),
-            )
-        }
-
         return filtered
-    }, [activeTab, searchQuery])
+    }, [activeTab])
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+        <div className="min-h-screen relative">
+            <img src="/bg-elements5.jpg" alt="bg-elements-5" className="absolute inset-0 -z-10 opacity-15" />
             {/* Hero Section */}
             <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 py-24">
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
@@ -304,25 +293,13 @@ export default function ServicesPage() {
 
             {/* Services Section with Tabs */}
             <section className="py-24">
-                <div className="container mx-auto px-4">
-                    {/* Search Bar */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="max-w-md mx-auto mb-12"
-                    >
-                        <div className="relative">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
-                            <Input
-                                type="text"
-                                placeholder="Search services..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="pl-10 pr-4 py-3 w-full rounded-full border-2 border-slate-200 focus:border-blue-500 bg-white/80 backdrop-blur-sm"
-                            />
-                        </div>
-                    </motion.div>
+                <div className="container mx-auto">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2 text-center">
+                    Services
+                </h2>
+                <h2 className="text-sm md:text-lg text-slate-600 mb-8 text-center">
+                    We Offer Wide Range of Services
+                </h2>
 
                     <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                         {/* Tab Navigation */}
@@ -331,14 +308,14 @@ export default function ServicesPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-12 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg gap-6">
+                            <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-12 bg-white/80 backdrop-blur-sm rounded-2xl border gap-6 h-16">
                                 {categories.map((category) => {
                                     const IconComponent = category.icon
                                     return (
                                         <TabsTrigger
                                             key={category.id}
                                             value={category.id}
-                                            className="flex items-center gap-2 px-4 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white transition-all duration-300"
+                                            className="flex items-center gap-2 py-4 rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-purple-600 data-[state=active]:text-white transition-all duration-300"
                                         >
                                             <IconComponent className="w-4 h-4" />
                                             <span className="hidden sm:inline">{category.label}</span>
@@ -353,7 +330,7 @@ export default function ServicesPage() {
                             <TabsContent key={category.id} value={category.id} className="mt-0">
                                 <AnimatePresence mode="wait">
                                     <motion.div
-                                        key={`${category.id}-${searchQuery}`}
+                                        key={`${category.id}`}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: -20 }}

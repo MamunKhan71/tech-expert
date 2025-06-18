@@ -271,9 +271,6 @@ export default function ServiceDetailsPage({ params }: ServiceDetailsPageProps) 
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto shadow-lg">
                     <span className="text-2xl font-bold text-white">{step.number}</span>
                   </div>
-                  {index < serviceData.process.steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-blue-300 to-purple-300 -translate-y-0.5" />
-                  )}
                 </div>
                 <h3 className="text-lg font-semibold text-slate-900 mb-3">{step.title}</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">{step.description}</p>
